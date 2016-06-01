@@ -1,0 +1,9 @@
+---
+layout: post
+title: QR kodları nedir?
+date: 2011-04-19 21:12
+author: 
+comments: true
+tags: [barcode readers, Barkod kodları, matrix barcode, QR kodları, Yaz bi yere]
+---
+<a href="http://www.egitimvaktim.com/dosyalar/2011/04/qrcode.334068.png"><img class="alignleft size-full wp-image-369" title="qrcode.334068" src="http://www.egitimvaktim.com/dosyalar/2011/04/qrcode.334068.png" alt="" width="200" height="200" /></a>Gazetelerde internet sitelerinde ya da herhangi bir elektronik aletin bir yerinde  kare şeklinde noktalar ve anlamsız çizgilerden oluşan şekillere mutlaka rastlamışsınızdır. İşte bu anlamsız şekillere QR kodları denilmektedir. Peki bu anlamsız şekillerin anlamlı birer kod olduğunu hiç biliyor muydunuz ya da hiç bunları okumaya çalıştınız mı? QR Code (quick response = hızlı cevap)  aslında buda bir barkod türüdür. Bu barkod sistemi 1994’de bir Japon firma tarafından geliştirilmiştir. İlk çıkışında daha çok otomobil sektöründe kullanılan bu kodlar zaman içerisinde bir çok alanda kullanılmaya başlamıştır.      Bu kodlar özel barkod okuyucuları ve bazı kameralı cep telefonları tarafından okunabilmektedir. Peki bu kodlar nasıl yapılıyor derseniz ve yapmak isterseniz bir matbaa ya da baskı makinesine ihtiyacınız yok  buradaki linke giderek sizde QR barkod oluşturabilirsiniz. (<a rel="nofollow" href="http://www.qrstuff.com/" target="_blank">http://www.qrstuff.com/</a>) Peki bunu yaptım nasıl okuyacağım derseniz  google de online barcode reader kelimelerini aratırsanız karşınıza çıkacak ilk sitelere girerseniz bu kodları çok rahat okutabilirsiniz. ( ilgili arama için <a href="http://www.google.com/search?hl=tr&amp;&amp;sa=X&amp;ei=BdxWTYfvJMiKhQfvkLC3DA&amp;ved=0CBUQBSgA&amp;q=online+barcode+reader&amp;spell=1" target="_blank">tıklayınız </a>) İçeriği oluşturmamda yararlanılan kaynaklar: <a href="http://en.wikipedia.org/wiki/QR_Code" target="_blank">http://en.wikipedia.org/wiki/QR_Code</a> ,
