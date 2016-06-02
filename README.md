@@ -8,3 +8,7 @@ Alt yapı olarak GithubPage - kullanılıyor.
 
  - [Anasayfa](http://egitimvaktim.com)
  - [İletişim](http://egitimvaktim.com/iletisim-2/)
+
+
+
+sürüm: ana mail  ...sa46+evaktim@gmail....  eklenmiştir.
