@@ -11,4 +11,4 @@ Alt yapı olarak GithubPage - kullanılıyor.
 
 
 
-sürüm: ana mail  ...sa46+evaktim@gmail....  eklenmiştir.
+sürüm: ana mail  ...sa46+evaktim @gmail....  eklenmiştir.
