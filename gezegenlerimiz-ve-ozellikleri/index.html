@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+   ________         ___  __              __           _          
+  /_  __/ /  ___   / _ \/ /__ ____  ___ / /____ _____(_)_ ____ _ 
+   / / / _ \/ -_) / ___/ / _ `/ _ \/ -_) __/ _ `/ __/ / // /  ' \
+  /_/ /_//_/\__/ /_/  /_/\_,_/_//_/\__/\__/\_,_/_/ /_/\_,_/_/_/_/
+
+  An (HTML5 + CSS3 + SVG) x JS experiment
+
+  Created by Little Workshop http://www.littleworkshop.fr
+
+  Turkish translate and content improvement by OkulBilişim (okulbilisim.com)
+
+  * Libraries used : jQuery, Raphaël, RequireJS
+  * Go check out the source on GitHub at : http://github.com/okulbilisim/gezegenlerimiz
+  * Supported in Firefox 4, Chrome, Safari
+-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link href='http://fonts.googleapis.com/css?family=Exo|Fruktur|Audiowide' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8">
+	<style>
+		.hidden { display:none; }
+		#spinner {position:absolute;left:50%;top:50%;margin-left:-25px;margin-top:-25px;height:50px;width:50px;background:url('img/spinner.gif') no-repeat;}
+	</style>
+	<title>Gezegenlerimiz ve Özellikleri</title>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-44038998-1', 'okulbilisim.com');
+	  ga('send', 'pageview');
+
+	</script>
+</head>
+<body class="system">
+	<div id="starfield">
+	</div>
+
+	<div id="spinner"></div>
+	
+	<img id="glow" src="img/glow.png">
+
+	<div id="title">
+		<h1 class="franchise"><span class="oregano">işte</span>GEZEGENLERİMİZ</h1>
+		<span id="subtitle" class="carto">HTML5 ile Astronomik Macera</span>
+	</div>
+	
+	<div id="instructions" class="oregano loading">
+		başlamak için bir gezegene tıklayın
+	</div>
+
+	<div id="toggle-credits" class="loading">
+		<span class="marketing">künye</span>
+	</div>
+
+	<section id="credits">
+		<span id="madeby" class="oregano">Orjinal <br /><a href="http://www.littleworkshop.fr/" target="_blank" title="Visit Little Workshop">Little Workshop</a> <br> Türkçe çeviri ve içerik geliştirmesi<br /><a href="http://www.okulbilisim.com/" target="_blank" title="OkulBilişim Yazılım Danışmanlık">OkulBilişim</a></span>
+		<div id="door">
+			<div></div>
+			<div></div>			
+		</div>
+		<div id="doorlight">
+			<div></div>
+			<div></div>			
+		</div>
+		<div id="authors">
+			<p id="guillaume">
+				<span class="marketing">tasarım</span>
+				<span class="bebas">Guillaume Lecollinet</span>
+				<span class="carto"><a target="_blank" href="http://twitter.com/glecollinet/" title="follow Guillaume on Twitter">@glecollinet</a></span>								
+			</p>
+			<p id="franck">
+				<span class="marketing">kod</span>
+				<span class="bebas">Franck Lecollinet</span>
+				<span class="carto"><a target="_blank" href="http://twitter.com/whatthefranck/" title="follow Franck on Twitter">@whatthefranck</a></span>
+			</p>
+			<p id="hmert"><br><br>
+				<span class="marketing">tercüme</span>
+				<span class="bebas">HUSEYIN MERT</span>
+				<span class="carto"><a target="_blank" href="http://twitter.com/hmert/" title="Hüseyin'i Twitter'da takip et">@hmert</a></span>
+			</p>
+		</div>
+	</section>
+	
+	<ul id="planets" class="loading">
+		<li id="mercury" class="planet"></li>
+		<li id="venus" class="planet"></li>
+		<li id="earth" class="planet"></li>
+		<li id="mars" class="planet"></li>
+		<li id="jupiter" class="planet"></li>	
+		<li id="saturn" class="planet"></li>
+		<li id="uranus" class="planet"></li>
+		<li id="neptune" class="planet"></li>
+	</ul>
+
+	<div id="gui" class="shrink">
+		<div id="container"></div>
+
+		<div id="ruler">
+		</div>
+
+		<div id="counter">
+			<span class="bebas">Güneşten uzaklığı</span><br />
+			<span id="kilometers" class="bebas"></span>
+		</div>
+      
+		<div id="back">
+			<span class="carto">uzaya geri dön</span>
+		</div>
+
+		<div id="moveleft">
+			<div id="previous">				
+				<img src="img/previous.svg" alt="Önceki Gezegen">
+			</div>
+		</div>
+		
+		<div id="moveright">
+			<div id="next">		
+				<img src="img/previous.svg" alt="Sonraki Gezegen">
+			</div>
+		</div>
+ 
+		<section class="content hidden" id="mercury-info">
+			<article id="mercury-window" class="window">
+				<div class="reflect">
+					<h1 class="bebas">
+						MERKÜR
+					</h1>
+					<p class="carto">(Utarit), Güneş Sistemi'nin Güneş'e en yakın gezegenidir. Büyüklük açısından 8 gezegen arasından son sırayı alır. Adını Roma mitolojisinde ticaret ve yolculuk tanrısı ve tanrıların habercisi olarak bilinen Merkür'den alır. </p>
+				</div>			
+			</article>
+			<div id="mercury-missions">
+				<h2 class="bebas">Merkür'ü gökyüzündeki görünümü</h2>
+				<ul>
+					<li><img src="img/mercuryobs1.png" alt=""></li>
+					<li><img src="img/mercuryobs2.png" alt=""></li>
+					<li><img src="img/mercuryobs3.png" alt=""></li>
+				</ul>
+				<img id="mariner10" src="img/mariner10.png" alt="">
+				<img id="techarrow" src="img/30years.png" alt="">
+				<img id="messenger" src="img/messenger.png" alt="">					
+			</div>
+		</section>
+
+		<section class="content hidden" id="venus-info">
+			<article id="venus-window" class="window">
+				<div class="reflect">
+					<h1 class="bebas">
+						VENÜS
+					</h1>
+					<p>Güneş Sisteminde, Güneşe uzaklık bakımından ikinci sıradaki gezegen. Ayrıca Zühre, Çolpan veya Çoban Yıldızı olarak da bilinir. Bu gezegen adını Eski Roma tanrıçası Venüs (Eski Yunan Mitolojisi'nde Afrodit)'ten almıştır. Kendi ekseni etrafında, Güneş Sistemindeki diğer tüm gezegenlerin aksi istikamette döner. Güneş etrafındaki dönüşünü 224.7 Dünya gününde tamamlar.</p>
+				</div>			
+			</article>
+			<ul id="venus-atmosphere" class="bebas">
+				<li>65 KM
+					<span>-100°C</span>
+					<span>Sülfürik Asit Bulutları</span>
+				</li>
+				<li>50 KM
+					<span>0°C</span>
+					<span>Sülfürik Asit dumanı</span>
+				</li>
+				<li>38 KM
+					<span>25°C</span>						
+					<span>Troposver</span>
+				</li>
+				<li>0 KM
+					<span>467°C</span>						
+					<span>Yüzey</span>
+				</li>
+			</ul>
+		</section>
+
+		<section class="content hidden" id="earth-info">
+			<article id="earth-window" class="window">
+				<div class="reflect">
+					<h1 class="bebas">
+						DÜNYA
+					</h1>
+					<p>(Yeryuvarı, eski: Küre-i Arz), Güneş Sistemi'nde Güneş'e en yakın üçüncü gezegendir. Güneş Sistemindeki en yoğun ve beşinci büyük gezegendir. Üzerinde zeki yaşam formları barındırdığından emin olunan tek gök cismidir.</p>
+				</div>			
+			</article>
+			<div id="earth-moon" class="grid moon">
+				<img id="distance" src="img/distance.png" alt="">
+			</div>
+			<ul id="earth-facts" class="properties bebas">
+				<li class="mass">
+					<img src="img/mass.svg" alt="mass">
+					5.9736 <small>x</small> 10<span class="exposant">24</span> kg
+					<span>Ay'dan 80 kat ağırdır</span>
+				</li>
+				<li class="perimeter">
+					<img src="img/perimeter.svg" alt="perimeter">
+					40,075,16 km
+					<span>Ekvator çapı</span>
+				</li>
+				<li class="revolution">
+					<img src="img/revolution.svg" alt="revolution">
+					365 gün
+					<span>Yörüngesinde tek dönüşü</span>
+				</li>
+				<li class="temperature">
+					<img src="img/temperature.svg" alt="temperature">
+					-89.2&deg;C to 57.8&deg;C
+					<span>Sıcaklık aralığı</span>
+				</li>
+			</ul>
+		</section>
+		
+		<section class="content hidden" id="mars-info">
+			<article id="mars-window" class="window">
+				<div class="reflect">
+					<h1 class="bebas">
+						MARS
+					</h1>
+					<p>veya Merih (eski: Sakıt), Güneş Sistemi'nin Güneş'ten itibâren dördüncü gezegeni. Roma mitolojisindeki savaş tanrısı Mars'a ithâfen adlandırılmıştır. Yüzeyindeki yaygın demiroksitten dolayı kızılımsı bir görünüme sahip olduğu için Kızıl Gezegen de denir.</p>
+				</div>			
+			</article>
+			<ul id="volcanoes" class="bebas">
+				<li>Olimpos Dağı<span>27,000 KM</span><hr /></li>
+				<li>Everest Dağı<span>8,848 KM</span><hr /></li>
+				<li>Fuji Dağı<span>3,776 KM</span><hr /></li>
+			</ul>
+		</section>
+		
+		<section class="content hidden" id="jupiter-info">
+			<article id="jupiter-window" class="window">
+				<div class="reflect">
+					<h1 class="bebas">
+						JÜPİTER
+					</h1>
+					<p>  (Erendiz, Müşteri) Güneş Sistemi'nin en büyük gezegeni. Güneş'ten uzaklığa göre beşinci sırada yer alır. Adını Roma mitolojisindeki tanrıların en büyüğü olan Jüpiter'den alır. Büyük ölçüde hidrojen ve helyumdan oluşmakta ve gaz devleri sınıfına girmektedir. 4 Uydusu vardır.</p>
+				</div>			
+			</article>				
+			<ul id="jupiter-moons" class="properties bebas">
+				<li><img src="img/iopicto.png" alt="">
+					IO
+					<span>Volkanlarla dolu </span>
+				</li>
+				<li><img src="img/europapicto.png" alt="">
+					EUROPA
+					<span>Tamamen buz</span>
+				</li>
+				<li><img src="img/ganymedepicto.png" alt="">
+					GANYMEDE
+					<span>Merkür'den daha büyük</span>	
+				</li>
+				<li><img src="img/callistopicto.png" alt="">
+					CALLISTO
+					<span>En yaşanabilir gezegenmiş</span>	
+				</li>															
+			</ul>
+			<div id="galilean-moons" class="grid bebas"></div>
+		</section>
+		
+		<section class="content hidden" id="saturn-info">
+			<article id="saturn-window" class="window">
+				<div class="reflect">
+					<h1 class="bebas">
+						SATÜRN
+					</h1>
+					<p>(eski adı ile Zühal) Güneş Sisteminin Güneş'e yakınlık sırasına göre 6. gezegenidir. Büyüklük açısından Jüpiter'den sonra ikinci sırada gelir. Adını yunan mitolojisindeki Kronos'tan alır. Çıplak gözle izlenebilen 5 gezegenden biri (diğerleri, Merkür, Venüs, Mars, ve Jüpiter) olarak eski çağlardan beri insanoğlunun dikkatini çekmiştir. Büyük ölçüde hidrojen ve helyumdan oluşmakta ve gaz devleri sınıfına girmektedir.</p>
+				</div>			
+			</article>
+			<div id="rings-origin">
+				<h2 class="bebas">Satürn'ün halkaları şöyle oluşmuştur</h2>
+				<p class="carto">Satürn halkaları çoğunluğunun<br />çapı 1 cm. ile 10 m. arasında değiştiği<br/> düşünülen büyük sayıda <br/>buz parçacıklarından oluşmuştur.</p>
+				<ul id="arrows" class="bebas">
+					<li><span>1</span>
+						<img class="saturnarrow" src="img/saturn-arrow1.png" alt="">
+						<img class="rings" src="img/rings1.png" alt="">							
+						</li>
+					<li><span>2</span>
+						<img class="saturnarrow" src="img/saturn-arrow2.png" alt="">
+						<img class="rings" src="img/rings2.png" alt="">							
+						</li>
+					<li><span>3</span>
+						<img class="saturnarrow" src="img/saturn-arrow3.png" alt="">
+						<img class="rings" src="img/rings3.png" alt="">							
+						</li>												
+				</ul>
+			</div>
+		</section>
+		
+		<section class="content hidden" id="uranus-info">
+			<article id="uranus-window" class="window">
+				<div class="reflect">
+					<h1 class="bebas">
+						URANÜS
+					</h1>
+					<p>Güneş Sisteminin Güneş'ten yakınlık sırasına göre 7. gezegenidir. Çap açısından Jüpiter ve Satürn'den sonra üçüncü, kütle açısından bu iki gezegen ve Neptün'ün ardından dördüncü sırada gelir. Adını Yunan mitolojisi'ndeki gökyüzü tanrısı Uranos'tan (Yunanca'da Οὐρανός, Latinceleştirilmiş şekli ile Uranus) alır. 1781 yılında William Herschel tarafından bulunmuştur. Buz devleri sınıfına girmektedir.</p>
+				</div>			
+			</article>
+			<div id="axial-tilt" class="grid">
+				<h2 class="bebas">Eksen Eğikliği</h2>
+				<img src="img/tilt.png" alt="">
+				<span class="bebas">98°</span>					
+			</div>				
+			<div id="uranus-atmosphere">
+				<h2 class="bebas">Atmosferi</h2>
+				<div id="hydrogen">
+					<div></div>
+					<div></div>
+					<div></div>
+					<span class="bebas">85.3%<br />
+						Hidrojen
+					</span>						
+				</div>
+				<div id="helium">
+					<div></div>
+					<div></div>
+					<div></div>
+					<span class="bebas">15.3%<br />
+						Helyum
+					</span>						
+				</div>
+				<div id="methane">
+					<div></div>
+					<div></div>
+					<div></div>
+					<span class="bebas">2.3%<br />
+						Metan
+					</span>
+				</div>
+				<div id="deuteride">
+					<div></div>
+					<div></div>
+					<div></div>
+					<span class="bebas">0.01%<br />
+						Hidrojen Dehidrat
+					</span>
+				</div>
+			</div>
+		</section>
+		
+		<section class="content hidden" id="neptune-info">
+			<article id="neptune-window" class="window">
+				<div class="reflect">
+					<h1 class="bebas">
+						NEPTÜN
+					</h1>
+					<p>, Güneş Sistemi'nin sekizinci ve Güneş'e en uzak gezegenidir. Adını Roma deniz tanrısı Neptunus'ten alan gezegen, çapına göre en büyük dördüncü, kütlesine göre ise en büyük üçüncü gezegendir. Dünya'nın 17 katı kütlesiyle ikizi sayılabilecek Uranüs'ten çok az büyük ve daha yoğundur. Güneş'e olan uzaklığı ortalama 30 Astronomik birimdir (AU).</p>
+				</div>			
+			</article>
+			<ul id="neptune-facts" class="bebas">
+				<li><img src="img/wind.png" alt="">
+					2100 <span>km/h</span>
+					<br />
+					<span class="carto">en yüksek rüzgar hızı</span>
+				</li>
+				<li><img src="img/satellite.png" alt="">
+					13 <span>bilinen uydu</span>
+					<br />
+					<span class="carto">ve artıyor...</span>
+				</li>
+				<li><img src="img/time.png" alt="">
+					164 <span>Dünya yılı</span>
+					<br />
+					<span class="carto">her Neptün yılı</span>
+				</li>
+			</ul>
+			<div id="flyby">
+				<img src="img/earthicon.png" alt="">
+				<img src="img/246min.png" alt="">
+				<img id="voyager2" src="img/voyager2.png" alt="Voyager 2">
+			</div>
+		</section>
+	</div>
+	
+	<div id="counters"></div>
+
+	<script data-main="main" src="js/require-jquery-1.4.4.min.js"></script>
+</body>
+</html>
