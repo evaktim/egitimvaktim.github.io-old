@@ -4340,7 +4340,7 @@ iframe[src*='codepen'] {
 }
 .reklam{float:left;padding-right:14px;padding-bottom:10px;}
 
-.reklam1{float:center;padding-right:14px;padding-bottom:10px;}
+.reklam1{float:center;padding-right:14px;padding-bottom:10px;max-width: 830px;}
 
 
 
