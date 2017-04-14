@@ -20,7 +20,7 @@ Peki staj raporu dosyalarının içerisinde neler mevcut daha çok üniversite 3
 </ul>
 Gibi dosyaların tamamı sitede mevcut dosyaları indirmek için aşağıdaki bağlantıyı izleyin. <strong>Yalnız sizden ricam sizde kendi raporlarınızı sitede paylaşırsanız başkalarına da fayda sağlamış olursunuz</strong>.
 
-<div id="dosya"> <a class="myl" title="okul deneyimi staj raporu örnekleri indir." href="http://www.egitimvaktim.com/dosyalar/2011/03/staj-raporları.zip" target="_blank"><strong>Buradan indiriniz</strong></a> </div>
+<div id="dosya"> <a class="myl" title="okul deneyimi staj raporu örnekleri indir." href="http://www.egitimvaktim.com/dosyalar/2011/03/staj-raporlari.zip" target="_blank"><strong>Buradan indiriniz</strong></a> </div>
 
 &nbsp;
 <p class="not"><strong>
